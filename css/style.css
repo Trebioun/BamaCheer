@@ -293,24 +293,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .testimonials .eyebrow { color: var(--gold); }
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: var(--space-md);
+  align-items: start;
+  justify-items: center;
 }
 .testimonial-card {
   background: var(--charcoal-soft);
-  padding: var(--space-md);
+  padding: var(--space-sm);
   border-radius: var(--radius);
-}
-.testimonial-card p.quote {
-  font-size: 1.05rem;
-  font-style: italic;
-  margin: 0 0 var(--space-sm);
-}
-.testimonial-card .name {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--gold);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* ---------- Location / Contact ---------- */

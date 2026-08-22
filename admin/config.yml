@@ -49,12 +49,17 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
 
-          - label: "Testimonials"
+          - label: "Testimonials (embedded Facebook posts)"
             name: "testimonials"
             widget: "list"
             fields:
-              - { label: "Quote", name: "quote", widget: "text" }
-              - { label: "Attribution (e.g. 'Parent, Level 3 athlete')", name: "name", widget: "string" }
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                options: ["post", "video"]
+                default: "post"
+                hint: "Use \"video\" for a Facebook video/reel share link (facebook.com/share/v/...), otherwise \"post\""
+              - { label: "Facebook Post/Video URL", name: "url", widget: "string", hint: "Must be a public post — private or friends-only posts won't embed" }
 
           - label: "Contact Info"
             name: "contact"

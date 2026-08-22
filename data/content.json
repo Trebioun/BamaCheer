@@ -38,12 +38,20 @@
   ],
   "testimonials": [
     {
-      "quote": "My daughter went from scared of a back handspring to competing it in eight months. The coaches here don't cut corners on safety.",
-      "name": "Parent, Senior Level athlete"
+      "type": "post",
+      "url": "https://www.facebook.com/share/1FmAVg2MYp/?mibextid=wwXIfr"
     },
     {
-      "quote": "Best program in the state for athletes who actually want to compete, not just tumble around.",
-      "name": "Parent, Level 3 athlete"
+      "type": "post",
+      "url": "https://www.facebook.com/share/1Bpg22MWrX/?mibextid=wwXIfr"
+    },
+    {
+      "type": "post",
+      "url": "https://www.facebook.com/share/p/1JfxJV2bdp/?mibextid=wwXIfr"
+    },
+    {
+      "type": "video",
+      "url": "https://www.facebook.com/share/v/1bzrmMxj2r/?mibextid=wwXIfr"
     }
   ],
   "contact": {
