@@ -77,18 +77,24 @@ fetch("data/content.json")
         .join("");
     }
 
-    // Testimonials
+    // Testimonials (embedded Facebook posts/videos from parents)
     const testimonialGrid = document.getElementById("testimonialGrid");
     if (data.testimonials) {
       testimonialGrid.innerHTML = data.testimonials
-        .map(
-          (t) => `
+        .map((t) => {
+          const pluginClass = t.type === "video" ? "fb-video" : "fb-post";
+          return `
         <div class="testimonial-card">
-          <p class="quote">&ldquo;${t.quote}&rdquo;</p>
-          <p class="name">${t.name}</p>
-        </div>`
-        )
+          <div class="${pluginClass}" data-href="${t.url}" data-width="340"></div>
+        </div>`;
+        })
         .join("");
+
+      // Facebook's SDK auto-parses on load, but our embeds are injected
+      // after that fetch resolves, so re-parse explicitly.
+      if (window.FB && window.FB.XFBML) {
+        window.FB.XFBML.parse(testimonialGrid);
+      }
     }
 
     // Contact info (shared email/hours) + per-location cards
