@@ -329,15 +329,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .program-card p { margin: 0; color: var(--charcoal-soft); font-size: 0.95rem; }
 
-/* ---------- Testimonials ---------- */
+/* ---------- Testimonials (Facebook post carousel) ---------- */
 .testimonials { background: var(--charcoal); color: var(--white); }
 .testimonials .eyebrow { color: var(--gold); }
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: var(--space-md);
-  align-items: start;
-  justify-items: center;
+.carousel--testimonials { background: transparent; box-shadow: none; }
+.carousel--testimonials .carousel-slide {
+  aspect-ratio: auto;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--space-md) var(--space-lg);
 }
 .testimonial-card {
   background: var(--charcoal-soft);
@@ -346,6 +346,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   max-width: 100%;
   overflow: hidden;
 }
+.carousel--testimonials .carousel-arrow--prev { left: 0; }
+.carousel--testimonials .carousel-arrow--next { right: 0; }
+.carousel--testimonials .carousel-dots { bottom: 0; }
 
 /* ---------- Location / Contact ---------- */
 .contact-info dt {
