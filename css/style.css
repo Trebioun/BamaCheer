@@ -150,14 +150,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ---------- Hero ---------- */
+.hero-wrap { position: relative; }
 .hero {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  width: 100%;
+  /* Match the banner image's native aspect ratio so the whole image shows, uncropped */
+  aspect-ratio: 1376 / 768;
   background: linear-gradient(160deg, var(--charcoal) 0%, var(--charcoal-soft) 55%, var(--crimson-dark) 130%);
   overflow: hidden;
-  padding-top: 5rem;
 }
 .hero::after {
   /* signature diagonal cut at base of hero */
@@ -168,16 +168,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--cream);
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
+.hero-inner {
+  /* Overlays the image on wider screens; on narrow screens (where the
+     full-aspect-ratio image gets too short for overlaid text) this
+     switches to normal flow below the image instead — see the
+     responsive section. */
+  position: absolute;
+  inset: 0;
+}
 .hero-content {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   z-index: 2;
   color: var(--white);
-  max-width: 480px;
-  margin: 0 0 0 auto;
+  max-width: min(420px, 55vw);
+  text-align: right;
+}
+.hero-eyebrow {
+  /* Left-aligned rather than right: on a short hero (narrow viewports,
+     since the banner keeps its native aspect ratio) this sits on the
+     opposite side from .hero-content so the two never collide even
+     when their vertical ranges overlap. */
+  position: absolute;
+  left: 0;
+  /* clear the stat bar's -70px overlap at the base of the hero (a
+     fixed pixel amount, so this matters more the shorter the hero gets) */
+  bottom: calc(70px + var(--space-md));
+  z-index: 2;
+  max-width: min(320px, 50vw);
+  text-align: left;
 }
 .hero p {
-  font-size: 1.15rem;
-  max-width: 520px;
+  font-size: clamp(0.85rem, 2.4vw, 1.15rem);
   color: rgba(255,255,255,0.85);
   margin-bottom: var(--space-md);
 }
@@ -449,6 +473,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 800px) {
   .nav-links { display: none; }
   .nav-toggle { display: block; }
+  /* The full-width, uncropped image gets too short here to overlay
+     readable text, so the copy moves below the image instead. */
+  .hero::after { display: none; }
+  .hero-inner {
+    position: static;
+    background: var(--charcoal);
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+  }
+  .hero-content,
+  .hero-eyebrow {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    text-align: left;
+  }
+  .hero-content { margin-top: var(--space-sm); }
   .nav-links.open {
     display: flex;
     flex-direction: column;
