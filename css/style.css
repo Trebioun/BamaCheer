@@ -266,9 +266,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
-  aspect-ratio: 4 / 3;
 }
-.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Photo carousel: letterbox instead of cropping, so no photo ever loses content */
+.carousel--photos .carousel-slide {
+  height: 420px;
+  background: var(--charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel--photos .carousel-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
 
 .carousel-arrow {
   position: absolute;
@@ -334,7 +348,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .testimonials .eyebrow { color: var(--gold); }
 .carousel--testimonials { background: transparent; box-shadow: none; }
 .carousel--testimonials .carousel-slide {
-  aspect-ratio: auto;
   display: flex;
   justify-content: center;
   padding: 0 var(--space-md) var(--space-lg);
@@ -449,4 +462,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .stat { flex: 1 1 100%; border-right: none; border-bottom: 1px solid #eee; }
   .stat:last-child { border-bottom: none; }
   .about-grid { grid-template-columns: 1fr; }
+  .carousel--photos .carousel-slide { height: 280px; }
 }
