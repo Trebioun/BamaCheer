@@ -33,7 +33,11 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body Text", name: "body", widget: "text" }
-              - { label: "Photo", name: "image", widget: "image", required: false }
+              - label: "Photo Carousel"
+                name: "images"
+                widget: "list"
+                required: false
+                field: { label: "Photo", name: "image", widget: "image" }
 
           - label: "Stats"
             name: "stats"

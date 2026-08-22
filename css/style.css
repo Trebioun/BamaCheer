@@ -46,6 +46,18 @@ body {
 
 img { max-width: 100%; display: block; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 a { color: inherit; }
 
 .container {
@@ -160,13 +172,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   position: relative;
   z-index: 2;
   color: var(--white);
-  max-width: 720px;
+  max-width: 480px;
+  margin: 0 0 0 auto;
 }
-.hero h1 {
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  margin: var(--space-sm) 0;
-}
-.hero h1 .accent { color: var(--gold); }
 .hero p {
   font-size: 1.15rem;
   max-width: 520px;
@@ -192,28 +200,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .btn-primary:hover { background: var(--crimson-dark); }
 .btn-outline { background: transparent; border-color: var(--white); color: var(--white); }
 .btn-outline:hover { background: var(--white); color: var(--charcoal); }
-
-/* motion stripe chevrons in hero background */
-.motion-stripes {
-  position: absolute;
-  top: 0; right: -10%;
-  height: 100%;
-  width: 55%;
-  z-index: 1;
-  opacity: 0.5;
-  pointer-events: none;
-}
-.motion-stripes span {
-  position: absolute;
-  top: 0;
-  width: 14%;
-  height: 140%;
-  background: rgba(212, 160, 23, 0.12);
-  transform: rotate(18deg);
-}
-.motion-stripes span:nth-child(2) { left: 18%; background: rgba(166, 25, 46, 0.25); }
-.motion-stripes span:nth-child(3) { left: 36%; background: rgba(212, 160, 23, 0.08); }
-.motion-stripes span:nth-child(4) { left: 54%; background: rgba(166, 25, 46, 0.15); }
 
 /* ---------- Stat bar (overlaps hero/about seam) ---------- */
 .stat-bar {
@@ -262,11 +248,80 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
 }
 .about-body { font-size: 1.1rem; color: var(--charcoal-soft); margin: 0; }
-.about-photo {
-  width: 100%;
+
+/* ---------- Carousel (About section photos) ---------- */
+.carousel {
+  position: relative;
   border-radius: var(--radius);
+  overflow: hidden;
   box-shadow: 0 20px 40px -20px rgba(23,19,16,0.35);
 }
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* Photo carousel: letterbox instead of cropping, so no photo ever loses content */
+.carousel--photos .carousel-slide {
+  height: 420px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel--photos .carousel-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(23,19,16,0.55);
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.carousel-arrow:hover { background: var(--crimson); }
+.carousel-arrow--prev { left: var(--space-sm); }
+.carousel-arrow--next { right: var(--space-sm); }
+
+.carousel-dots {
+  position: absolute;
+  left: 0; right: 0; bottom: var(--space-sm);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.5);
+  padding: 0;
+  cursor: pointer;
+}
+.carousel-dot.active { background: var(--gold); }
 
 /* ---------- Programs ---------- */
 .programs-grid {
@@ -288,15 +343,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .program-card p { margin: 0; color: var(--charcoal-soft); font-size: 0.95rem; }
 
-/* ---------- Testimonials ---------- */
+/* ---------- Testimonials (Facebook post carousel) ---------- */
 .testimonials { background: var(--charcoal); color: var(--white); }
 .testimonials .eyebrow { color: var(--gold); }
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: var(--space-md);
-  align-items: start;
-  justify-items: center;
+.carousel--testimonials { background: transparent; box-shadow: none; }
+.carousel--testimonials .carousel-slide {
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--space-md) var(--space-lg);
 }
 .testimonial-card {
   background: var(--charcoal-soft);
@@ -305,6 +359,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   max-width: 100%;
   overflow: hidden;
 }
+.carousel--testimonials .carousel-arrow--prev { left: 0; }
+.carousel--testimonials .carousel-arrow--next { right: 0; }
+.carousel--testimonials .carousel-dots { bottom: 0; }
 
 /* ---------- Location / Contact ---------- */
 .contact-info dt {
@@ -405,4 +462,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .stat { flex: 1 1 100%; border-right: none; border-bottom: 1px solid #eee; }
   .stat:last-child { border-bottom: none; }
   .about-grid { grid-template-columns: 1fr; }
+  .carousel--photos .carousel-slide { height: 280px; }
 }

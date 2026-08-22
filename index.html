@@ -34,14 +34,13 @@
 </nav>
 
 <header class="hero" id="hero">
-  <div class="motion-stripes" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-  </div>
-  <div class="container hero-content">
-    <p class="eyebrow" data-field="hero.eyebrow">Tuscaloosa, Alabama</p>
-    <h1 data-field="hero.title">Bama Cheer <span class="accent">Xtreme</span></h1>
-    <p data-field="hero.subtitle">Competitive all-star cheer for athletes who chase the routine until it's perfect.</p>
-    <a href="#contact" class="btn btn-primary" data-field="hero.ctaText">Contact Us</a>
+  <h1 class="sr-only" data-field="hero.title">Bama Cheer Xtreme</h1>
+  <div class="container">
+    <div class="hero-content">
+      <p class="eyebrow" data-field="hero.eyebrow">Tuscaloosa, Alabama</p>
+      <p data-field="hero.subtitle">Competitive all-star cheer for athletes who chase the routine until it's perfect.</p>
+      <a href="#contact" class="btn btn-primary" data-field="hero.ctaText">Contact Us</a>
+    </div>
   </div>
 </header>
 
@@ -61,7 +60,12 @@
       <p class="about-body" data-field="about.body">
         Bama Cheer Xtreme trains competitive all-star athletes from Tiny Tots through Senior level.
       </p>
-      <img class="about-photo" id="aboutPhoto" src="" alt="Bama Cheer Xtreme coach and athletes" hidden>
+      <div class="carousel carousel--photos" id="aboutCarousel" hidden>
+        <div class="carousel-track" id="aboutCarouselTrack"></div>
+        <button type="button" class="carousel-arrow carousel-arrow--prev" id="aboutCarouselPrev" aria-label="Previous photo">&#10094;</button>
+        <button type="button" class="carousel-arrow carousel-arrow--next" id="aboutCarouselNext" aria-label="Next photo">&#10095;</button>
+        <div class="carousel-dots" id="aboutCarouselDots"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -84,8 +88,11 @@
       <p class="eyebrow">Parents & athletes</p>
       <h2>What families say</h2>
     </div>
-    <div class="testimonial-grid" id="testimonialGrid">
-      <!-- testimonials injected by JS -->
+    <div class="carousel carousel--testimonials" id="testimonialsCarousel" hidden>
+      <div class="carousel-track" id="testimonialsCarouselTrack"></div>
+      <button type="button" class="carousel-arrow carousel-arrow--prev" id="testimonialsCarouselPrev" aria-label="Previous post">&#10094;</button>
+      <button type="button" class="carousel-arrow carousel-arrow--next" id="testimonialsCarouselNext" aria-label="Next post">&#10095;</button>
+      <div class="carousel-dots" id="testimonialsCarouselDots"></div>
     </div>
   </div>
 </section>

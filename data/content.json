@@ -6,12 +6,18 @@
     "subtitle": "Competitive all-star cheer for athletes who chase the routine until it's perfect.",
     "ctaText": "Contact Us",
     "ctaLink": "#contact",
-    "backgroundImage": "images/team-awards.jpg"
+    "backgroundImage": "images/hero-banner.jpg"
   },
   "about": {
     "heading": "Built on the mat, not the sideline",
     "body": "Bama Cheer Xtreme trains competitive all-star athletes from Tiny tots through Senior level. Our coaches come from collegiate and all-star competition backgrounds, and our program is built around technique, safety, and teamwork \u2014 not just tumbling passes.",
-    "image": "images/team-coach.jpg"
+    "images": [
+      "images/team-coach.jpg",
+      "images/about-coaches.jpg",
+      "images/about-mayors-cup.jpg",
+      "images/about-bama-bash.jpg",
+      "images/about-team-tree.jpg"
+    ]
   },
   "stats": [
     { "number": "12+", "label": "Years coaching" },
