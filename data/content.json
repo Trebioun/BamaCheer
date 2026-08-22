@@ -1,15 +1,17 @@
 {
+  "logo": "images/logo.png",
   "hero": {
-    "eyebrow": "Tuscaloosa, Alabama",
-    "title": "Bama Cheer Extreme",
+    "eyebrow": "Tuscaloosa & Northport, Alabama",
+    "title": "Bama Cheer Xtreme",
     "subtitle": "Competitive all-star cheer for athletes who chase the routine until it's perfect.",
     "ctaText": "Contact Us",
     "ctaLink": "#contact",
-    "backgroundImage": "images/hero-placeholder.jpg"
+    "backgroundImage": "images/team-awards.jpg"
   },
   "about": {
     "heading": "Built on the mat, not the sideline",
-    "body": "Bama Cheer Extreme trains competitive all-star athletes from Tiny tots through Senior level. Our coaches come from collegiate and all-star competition backgrounds, and our program is built around technique, safety, and teamwork \u2014 not just tumbling passes."
+    "body": "Bama Cheer Xtreme trains competitive all-star athletes from Tiny tots through Senior level. Our coaches come from collegiate and all-star competition backgrounds, and our program is built around technique, safety, and teamwork \u2014 not just tumbling passes.",
+    "image": "images/team-coach.jpg"
   },
   "stats": [
     { "number": "12+", "label": "Years coaching" },
@@ -45,14 +47,23 @@
     }
   ],
   "contact": {
-    "address": "1234 Cheer Way, Tuscaloosa, AL 35401",
-    "phone": "(205) 555-0142",
-    "email": "info@bamacheerextreme.com",
-    "hours": "Mon\u2013Fri 3:00 PM \u2013 8:30 PM | Sat 9:00 AM \u2013 1:00 PM",
-    "mapEmbedSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13000!2d-87.5692!3d33.2098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDEyJzM1LjMiTiA4N8KwMzQnMDkuMSJX!5e0!3m2!1sen!2sus!4v0"
+    "email": "Bamacheer@yahoo.com",
+    "hours": "Hours coming soon \u2014 call or email to confirm practice times",
+    "locations": [
+      {
+        "name": "University Location",
+        "address": "3618 University Blvd E, Tuscaloosa, AL 35404",
+        "mapEmbedSrc": "https://www.google.com/maps?q=3618+University+Blvd+E,+Tuscaloosa,+AL+35404&output=embed"
+      },
+      {
+        "name": "Northport Location",
+        "address": "2403 10th Street, Northport, AL 35476",
+        "mapEmbedSrc": "https://www.google.com/maps?q=2403+10th+Street,+Northport,+AL+35476&output=embed"
+      }
+    ]
   },
   "social": {
-    "instagram": "https://instagram.com/bamacheerextreme",
-    "facebook": "https://facebook.com/bamacheerextreme"
+    "instagram": "https://instagram.com/bamacheerxtreme",
+    "facebook": "https://www.facebook.com/share/19Hb5xYePv/?mibextid=wwXIfr"
   }
 }

@@ -1,4 +1,4 @@
-# Bama Cheer Extreme — Landing Page
+# Bama Cheer Xtreme — Landing Page
 
 A one-page site with a client-editable content panel (no code required to update text, photos, or contact info).
 
@@ -18,7 +18,7 @@ The page pulls its text and contact details from `data/content.json` at load tim
 ## 1. Push to GitHub
 
 ```bash
-cd bama-cheer-extreme
+cd bama-cheer-xtreme
 git init
 git add .
 git commit -m "Initial landing page"
@@ -27,7 +27,7 @@ git commit -m "Initial landing page"
 Create a new repo on GitHub, then push:
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/bama-cheer-extreme.git
+git remote add origin https://github.com/YOUR_USERNAME/bama-cheer-xtreme.git
 git branch -M main
 git push -u origin main
 ```
@@ -37,7 +37,7 @@ git push -u origin main
 1. Go to [app.netlify.com](https://app.netlify.com) → **Add new site → Import an existing project**
 2. Connect GitHub, pick this repo
 3. Build settings: leave the build command blank, publish directory = `/` (this is a static site, nothing to build)
-4. Deploy — you'll get a live URL like `bama-cheer-extreme.netlify.app`
+4. Deploy — you'll get a live URL like `bama-cheer-xtreme.netlify.app`
 5. Later: **Site settings → Domain management** to add the client's real domain
 
 ## 3. Turn on the content editor (Decap CMS)

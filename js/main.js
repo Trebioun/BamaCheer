@@ -24,8 +24,8 @@ fetch("data/content.json")
       // Preserve the <span class="accent"> inside the hero title
       if (path === "hero.title") {
         el.innerHTML = value.replace(
-          "Extreme",
-          '<span class="accent">Extreme</span>'
+          "Xtreme",
+          '<span class="accent">Xtreme</span>'
         );
       } else if (el.tagName === "A") {
         el.textContent = value;
@@ -40,6 +40,13 @@ fetch("data/content.json")
       hero.style.backgroundImage = `linear-gradient(160deg, rgba(23,19,16,0.85), rgba(122,18,32,0.75)), url('${data.hero.backgroundImage}')`;
       hero.style.backgroundSize = "cover";
       hero.style.backgroundPosition = "center";
+    }
+
+    // About photo
+    if (data.about && data.about.image) {
+      const aboutPhoto = document.getElementById("aboutPhoto");
+      aboutPhoto.src = data.about.image;
+      aboutPhoto.hidden = false;
     }
 
     // Stats
@@ -84,17 +91,32 @@ fetch("data/content.json")
         .join("");
     }
 
-    // Contact info + map
+    // Contact info (shared email/hours) + per-location cards
     if (data.contact) {
       const c = data.contact;
-      document.getElementById("contactInfo").innerHTML = `
-        <dt>Address</dt><dd>${c.address}</dd>
-        <dt>Phone</dt><dd><a href="tel:${c.phone.replace(/[^\d+]/g, "")}">${c.phone}</a></dd>
-        <dt>Email</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd>
-        <dt>Hours</dt><dd>${c.hours}</dd>
-      `;
-      if (c.mapEmbedSrc) {
-        document.getElementById("mapFrame").src = c.mapEmbedSrc;
+
+      const sharedRows = [];
+      if (c.email) sharedRows.push(`<dt>Email</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd>`);
+      if (c.hours) sharedRows.push(`<dt>Hours</dt><dd>${c.hours}</dd>`);
+      document.getElementById("contactShared").innerHTML = sharedRows.join("");
+
+      const locationsGrid = document.getElementById("locationsGrid");
+      if (Array.isArray(c.locations)) {
+        locationsGrid.innerHTML = c.locations
+          .map(
+            (loc) => `
+          <div class="location-card">
+            <h3>${loc.name}</h3>
+            <p class="location-address">${loc.address}</p>
+            ${loc.phone ? `<p class="location-phone"><a href="tel:${loc.phone.replace(/[^\d+]/g, "")}">${loc.phone}</a></p>` : ""}
+            ${
+              loc.mapEmbedSrc
+                ? `<div class="map-embed"><iframe src="${loc.mapEmbedSrc}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${loc.name} map"></iframe></div>`
+                : ""
+            }
+          </div>`
+          )
+          .join("");
       }
     }
 

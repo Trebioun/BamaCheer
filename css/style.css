@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Bama Cheer Extreme — Design Tokens
+   Bama Cheer Xtreme — Design Tokens
    Palette: Crimson #A6192E, Charcoal #171310, Gold #D4A017, Cream #F7F3EC
    Display: 'Anton' (condensed, athletic) / Body: 'Inter'
    Signature: diagonal "motion stripe" dividers between sections
@@ -93,14 +93,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding-bottom: var(--space-sm);
 }
 .nav-logo {
-  font-family: var(--font-display);
-  color: var(--white);
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
-.nav-logo span { color: var(--gold); }
+.nav-logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
 .nav-links {
   display: flex;
   gap: var(--space-md);
@@ -254,7 +255,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .section-heading h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-top: var(--space-xs); }
 
 /* ---------- About ---------- */
-.about-body { font-size: 1.1rem; max-width: 680px; color: var(--charcoal-soft); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+.about-body { font-size: 1.1rem; color: var(--charcoal-soft); margin: 0; }
+.about-photo {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px -20px rgba(23,19,16,0.35);
+}
 
 /* ---------- Programs ---------- */
 .programs-grid {
@@ -302,12 +314,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ---------- Location / Contact ---------- */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  align-items: start;
-}
 .contact-info dt {
   font-weight: 700;
   text-transform: uppercase;
@@ -317,9 +323,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   margin-top: var(--space-sm);
 }
 .contact-info dd { margin: 0.2rem 0 0; }
-.map-embed { border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 24px -18px rgba(23,19,16,0.4); }
-.map-embed iframe { width: 100%; height: 320px; border: 0; }
+.contact-shared { margin-bottom: var(--space-lg); }
 
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.location-card {
+  background: var(--white);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--crimson);
+  box-shadow: 0 10px 24px -18px rgba(23,19,16,0.4);
+}
+.location-card h3 {
+  font-size: 1.1rem;
+  color: var(--crimson);
+  margin-bottom: var(--space-xs);
+}
+.location-address { margin: 0 0 var(--space-sm); color: var(--charcoal-soft); }
+.location-phone { margin: 0 0 var(--space-sm); font-weight: 600; }
+.location-phone a { text-decoration: none; }
+
+.map-embed { border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 24px -18px rgba(23,19,16,0.4); }
+.map-embed iframe { width: 100%; height: 240px; border: 0; }
+
+.contact-form-wrap { max-width: 560px; }
 .contact-form {
   display: grid;
   gap: var(--space-sm);
@@ -380,5 +411,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
   .stat { flex: 1 1 100%; border-right: none; border-bottom: 1px solid #eee; }
   .stat:last-child { border-bottom: none; }
-  .contact-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
 }
