@@ -7,13 +7,14 @@
 <meta name="description" content="Bama Cheer Xtreme is a competitive all-star cheerleading gym. Tumbling classes, tiny tots, and teams for every level. Contact us to get started.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/logo.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <nav class="nav">
   <div class="container">
-    <a href="#" class="nav-logo">Bama Cheer <span>Xtreme</span></a>
+    <a href="#" class="nav-logo"><img src="images/logo.png" alt="Bama Cheer Xtreme" id="navLogoImg"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
@@ -48,9 +49,12 @@
       <p class="eyebrow">Who we are</p>
       <h2 data-field="about.heading">Built on the mat, not the sideline</h2>
     </div>
-    <p class="about-body" data-field="about.body">
-      Bama Cheer Xtreme trains competitive all-star athletes from Tiny Tots through Senior level.
-    </p>
+    <div class="about-grid">
+      <p class="about-body" data-field="about.body">
+        Bama Cheer Xtreme trains competitive all-star athletes from Tiny Tots through Senior level.
+      </p>
+      <img class="about-photo" id="aboutPhoto" src="" alt="Bama Cheer Xtreme coach and athletes" hidden>
+    </div>
   </div>
 </section>
 
@@ -84,15 +88,13 @@
       <p class="eyebrow">Get in touch</p>
       <h2>Contact Us</h2>
     </div>
-    <div class="contact-grid">
-      <div>
-        <dl class="contact-info" id="contactInfo">
-          <!-- contact details injected by JS -->
-        </dl>
-        <div class="map-embed" style="margin-top:1.5rem;">
-          <iframe id="mapFrame" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Gym location map"></iframe>
-        </div>
-      </div>
+    <dl class="contact-info contact-shared" id="contactShared">
+      <!-- email + hours injected by JS -->
+    </dl>
+    <div class="locations-grid" id="locationsGrid">
+      <!-- location cards injected by JS -->
+    </div>
+    <div class="contact-form-wrap">
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
         <div>
           <label for="name">Name</label>

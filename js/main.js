@@ -42,6 +42,13 @@ fetch("data/content.json")
       hero.style.backgroundPosition = "center";
     }
 
+    // About photo
+    if (data.about && data.about.image) {
+      const aboutPhoto = document.getElementById("aboutPhoto");
+      aboutPhoto.src = data.about.image;
+      aboutPhoto.hidden = false;
+    }
+
     // Stats
     const statBar = document.getElementById("statBar");
     if (data.stats) {
@@ -84,17 +91,32 @@ fetch("data/content.json")
         .join("");
     }
 
-    // Contact info + map
+    // Contact info (shared email/hours) + per-location cards
     if (data.contact) {
       const c = data.contact;
-      document.getElementById("contactInfo").innerHTML = `
-        <dt>Address</dt><dd>${c.address}</dd>
-        <dt>Phone</dt><dd><a href="tel:${c.phone.replace(/[^\d+]/g, "")}">${c.phone}</a></dd>
-        <dt>Email</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd>
-        <dt>Hours</dt><dd>${c.hours}</dd>
-      `;
-      if (c.mapEmbedSrc) {
-        document.getElementById("mapFrame").src = c.mapEmbedSrc;
+
+      const sharedRows = [];
+      if (c.email) sharedRows.push(`<dt>Email</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd>`);
+      if (c.hours) sharedRows.push(`<dt>Hours</dt><dd>${c.hours}</dd>`);
+      document.getElementById("contactShared").innerHTML = sharedRows.join("");
+
+      const locationsGrid = document.getElementById("locationsGrid");
+      if (Array.isArray(c.locations)) {
+        locationsGrid.innerHTML = c.locations
+          .map(
+            (loc) => `
+          <div class="location-card">
+            <h3>${loc.name}</h3>
+            <p class="location-address">${loc.address}</p>
+            ${loc.phone ? `<p class="location-phone"><a href="tel:${loc.phone.replace(/[^\d+]/g, "")}">${loc.phone}</a></p>` : ""}
+            ${
+              loc.mapEmbedSrc
+                ? `<div class="map-embed"><iframe src="${loc.mapEmbedSrc}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${loc.name} map"></iframe></div>`
+                : ""
+            }
+          </div>`
+          )
+          .join("");
       }
     }
 
