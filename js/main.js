@@ -16,28 +16,18 @@ function getPath(obj, path) {
 fetch("data/content.json")
   .then((res) => res.json())
   .then((data) => {
-    // Text fields marked with data-field="hero.title" etc.
+    // Text fields marked with data-field="hero.eyebrow" etc.
     document.querySelectorAll("[data-field]").forEach((el) => {
       const path = el.getAttribute("data-field");
       const value = getPath(data, path);
       if (value === null) return;
-      // Preserve the <span class="accent"> inside the hero title
-      if (path === "hero.title") {
-        el.innerHTML = value.replace(
-          "Xtreme",
-          '<span class="accent">Xtreme</span>'
-        );
-      } else if (el.tagName === "A") {
-        el.textContent = value;
-      } else {
-        el.textContent = value;
-      }
+      el.textContent = value;
     });
 
-    // Hero background image
+    // Hero background image (dark pocket on the right where the copy sits)
     if (data.hero && data.hero.backgroundImage) {
       const hero = document.getElementById("hero");
-      hero.style.backgroundImage = `linear-gradient(160deg, rgba(23,19,16,0.85), rgba(122,18,32,0.75)), url('${data.hero.backgroundImage}')`;
+      hero.style.backgroundImage = `radial-gradient(ellipse 110% 160% at 78% 50%, rgba(23,19,16,0.94) 0%, rgba(23,19,16,0.85) 30%, rgba(23,19,16,0.55) 55%, rgba(23,19,16,0.15) 75%, rgba(23,19,16,0) 90%), url('${data.hero.backgroundImage}')`;
       hero.style.backgroundSize = "cover";
       hero.style.backgroundPosition = "center";
     }
