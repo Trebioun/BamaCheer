@@ -271,7 +271,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* Photo carousel: letterbox instead of cropping, so no photo ever loses content */
 .carousel--photos .carousel-slide {
   height: 420px;
-  background: var(--charcoal);
+  background: var(--cream);
   display: flex;
   align-items: center;
   justify-content: center;
