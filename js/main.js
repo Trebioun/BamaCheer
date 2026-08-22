@@ -13,6 +13,59 @@ function getPath(obj, path) {
   return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
 }
 
+// ---------- Photo carousel (used by the About section) ----------
+function initCarousel(images) {
+  const carousel = document.getElementById("aboutCarousel");
+  const track = document.getElementById("aboutCarouselTrack");
+  const dotsWrap = document.getElementById("aboutCarouselDots");
+  const prevBtn = document.getElementById("aboutCarouselPrev");
+  const nextBtn = document.getElementById("aboutCarouselNext");
+
+  track.innerHTML = images
+    .map((src, i) => `<div class="carousel-slide"><img src="${src}" alt="Bama Cheer Xtreme photo ${i + 1}" loading="lazy"></div>`)
+    .join("");
+  dotsWrap.innerHTML = images
+    .map((_, i) => `<button type="button" class="carousel-dot${i === 0 ? " active" : ""}" aria-label="Go to photo ${i + 1}"></button>`)
+    .join("");
+  carousel.hidden = false;
+
+  const dots = Array.from(dotsWrap.children);
+  let active = 0;
+
+  function goTo(index) {
+    active = (index + images.length) % images.length;
+    track.scrollTo({ left: active * track.clientWidth, behavior: "smooth" });
+  }
+
+  dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
+  prevBtn.addEventListener("click", () => goTo(active - 1));
+  nextBtn.addEventListener("click", () => goTo(active + 1));
+
+  // Keep dots in sync when the user swipes/scrolls the track directly
+  let scrollTimeout;
+  track.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      dots[active]?.classList.remove("active");
+      active = index;
+      dots[active]?.classList.add("active");
+    }, 100);
+  });
+
+  if (images.length > 1) {
+    let autoplay = setInterval(() => goTo(active + 1), 5000);
+    carousel.addEventListener("mouseenter", () => clearInterval(autoplay));
+    carousel.addEventListener("mouseleave", () => {
+      autoplay = setInterval(() => goTo(active + 1), 5000);
+    });
+  } else {
+    prevBtn.hidden = true;
+    nextBtn.hidden = true;
+    dotsWrap.hidden = true;
+  }
+}
+
 fetch("data/content.json")
   .then((res) => res.json())
   .then((data) => {
@@ -32,11 +85,9 @@ fetch("data/content.json")
       hero.style.backgroundPosition = "center";
     }
 
-    // About photo
-    if (data.about && data.about.image) {
-      const aboutPhoto = document.getElementById("aboutPhoto");
-      aboutPhoto.src = data.about.image;
-      aboutPhoto.hidden = false;
+    // About photo carousel
+    if (data.about && Array.isArray(data.about.images) && data.about.images.length) {
+      initCarousel(data.about.images);
     }
 
     // Stats
