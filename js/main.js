@@ -24,8 +24,8 @@ fetch("data/content.json")
       // Preserve the <span class="accent"> inside the hero title
       if (path === "hero.title") {
         el.innerHTML = value.replace(
-          "Extreme",
-          '<span class="accent">Extreme</span>'
+          "Xtreme",
+          '<span class="accent">Xtreme</span>'
         );
       } else if (el.tagName === "A") {
         el.textContent = value;
