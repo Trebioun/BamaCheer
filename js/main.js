@@ -78,10 +78,16 @@ fetch("data/content.json")
       el.textContent = value;
     });
 
-    // Hero background image (dark pocket on the right where the copy sits)
+    // Nav logo
+    if (data.logo) {
+      document.getElementById("navLogoImg").src = data.logo;
+    }
+
+    // Hero background image, shown in full (no crop) with the right side
+    // darkened for contrast since the copy now runs top-to-bottom on the right
     if (data.hero && data.hero.backgroundImage) {
       const hero = document.getElementById("hero");
-      hero.style.backgroundImage = `radial-gradient(ellipse 110% 160% at 78% 50%, rgba(23,19,16,0.94) 0%, rgba(23,19,16,0.85) 30%, rgba(23,19,16,0.55) 55%, rgba(23,19,16,0.15) 75%, rgba(23,19,16,0) 90%), url('${data.hero.backgroundImage}')`;
+      hero.style.backgroundImage = `linear-gradient(90deg, rgba(23,19,16,0) 0%, rgba(23,19,16,0) 42%, rgba(23,19,16,0.5) 58%, rgba(23,19,16,0.82) 75%, rgba(23,19,16,0.9) 100%), url('${data.hero.backgroundImage}')`;
       hero.style.backgroundSize = "cover";
       hero.style.backgroundPosition = "center";
     }
@@ -144,11 +150,12 @@ fetch("data/content.json")
       });
     }
 
-    // Contact info (shared email/hours) + per-location cards
+    // Contact info (shared phone/email/hours) + per-location cards
     if (data.contact) {
       const c = data.contact;
 
       const sharedRows = [];
+      if (c.phone) sharedRows.push(`<dt>Phone</dt><dd><a href="tel:${c.phone.replace(/[^\d+]/g, "")}">${c.phone}</a></dd>`);
       if (c.email) sharedRows.push(`<dt>Email</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd>`);
       if (c.hours) sharedRows.push(`<dt>Hours</dt><dd>${c.hours}</dd>`);
       document.getElementById("contactShared").innerHTML = sharedRows.join("");

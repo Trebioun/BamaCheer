@@ -1,16 +1,16 @@
 {
-  "logo": "images/logo.png",
+  "logo": "images/logo-horizontal.png",
   "hero": {
-    "eyebrow": "Tuscaloosa & Northport, Alabama",
-    "title": "Bama Cheer Xtreme",
-    "subtitle": "Competitive all-star cheer for athletes who chase the routine until it's perfect.",
+    "eyebrow": "Home of Bama Cheer Xtreme",
+    "title": "A's Athletics",
+    "subtitle": "Cheer, dance, Ninja Warrior training, and birthday parties in Tuscaloosa & Northport \u2014 building skills, confidence, and champions.",
     "ctaText": "Contact Us",
     "ctaLink": "#contact",
     "backgroundImage": "images/hero-banner.jpg"
   },
   "about": {
-    "heading": "Built on the mat, not the sideline",
-    "body": "Bama Cheer Xtreme trains competitive all-star athletes from Tiny tots through Senior level. Our coaches come from collegiate and all-star competition backgrounds, and our program is built around technique, safety, and teamwork \u2014 not just tumbling passes.",
+    "heading": "Building Skills. Building Confidence. Building Champions.",
+    "body": "At A's Athletics, our mission is to empower children, teens, and adults through movement, athletics, discipline, and personal growth. We provide a positive, inclusive environment where athletes of all ages can develop their skills, build confidence, strengthen their bodies, and discover their potential. Through competitive cheer, tumbling, Ninja Warrior training, and dance, we aim to develop more than great athletes \u2014 we build confidence, character, discipline, resilience, and a commitment to excellence, inspiring every athlete to believe in themselves, work hard, have fun, and grow stronger both inside and out.",
     "images": [
       "images/team-coach.jpg",
       "images/about-coaches.jpg",
@@ -40,6 +40,18 @@
     {
       "name": "Private Coaching",
       "description": "One-on-one sessions for skill-specific goals: standing tucks, running passes, stunting technique."
+    },
+    {
+      "name": "Dance",
+      "description": "Technique-based classes in jazz, hip-hop, and pom styles for all ages and skill levels."
+    },
+    {
+      "name": "Ninja Warrior Training",
+      "description": "Obstacle-course training built for strength, agility, and problem-solving — inspired by American Ninja Warrior."
+    },
+    {
+      "name": "Birthday Parties",
+      "description": "Host your child's birthday with us! Cheer, tumbling, and ninja-inspired activities make it a party to remember."
     }
   ],
   "testimonials": [
@@ -61,6 +73,7 @@
     }
   ],
   "contact": {
+    "phone": "(205) 242-7576",
     "email": "Bamacheer@yahoo.com",
     "hours": "Hours coming soon \u2014 call or email to confirm practice times",
     "locations": [
