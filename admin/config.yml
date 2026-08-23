@@ -69,6 +69,7 @@ collections:
             name: "contact"
             widget: "object"
             fields:
+              - { label: "Phone", name: "phone", widget: "string", required: false }
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Hours", name: "hours", widget: "string" }
               - label: "Locations"

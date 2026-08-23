@@ -78,6 +78,11 @@ fetch("data/content.json")
       el.textContent = value;
     });
 
+    // Nav logo
+    if (data.logo) {
+      document.getElementById("navLogoImg").src = data.logo;
+    }
+
     // Hero background image, shown in full (no crop) with the right side
     // darkened for contrast since the copy now runs top-to-bottom on the right
     if (data.hero && data.hero.backgroundImage) {
@@ -145,11 +150,12 @@ fetch("data/content.json")
       });
     }
 
-    // Contact info (shared email/hours) + per-location cards
+    // Contact info (shared phone/email/hours) + per-location cards
     if (data.contact) {
       const c = data.contact;
 
       const sharedRows = [];
+      if (c.phone) sharedRows.push(`<dt>Phone</dt><dd><a href="tel:${c.phone.replace(/[^\d+]/g, "")}">${c.phone}</a></dd>`);
       if (c.email) sharedRows.push(`<dt>Email</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd>`);
       if (c.hours) sharedRows.push(`<dt>Hours</dt><dd>${c.hours}</dd>`);
       document.getElementById("contactShared").innerHTML = sharedRows.join("");
