@@ -385,8 +385,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--charcoal-soft);
   padding: var(--space-sm);
   border-radius: var(--radius);
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
   overflow: hidden;
+}
+.testimonial-card .fb-post,
+.testimonial-card .fb-video {
+  width: 100% !important;
 }
 .carousel--testimonials .carousel-arrow--prev { left: 0; }
 .carousel--testimonials .carousel-arrow--next { right: 0; }
