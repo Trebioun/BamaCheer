@@ -13,6 +13,45 @@ function getPath(obj, path) {
   return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
 }
 
+// ---------- Scale Facebook embeds down to fit, preserving their natural layout ----------
+function fitFbEmbeds(container) {
+  container.querySelectorAll(".fb-embed-fit").forEach((fitEl) => {
+    const iframe = fitEl.querySelector("iframe");
+    const card = fitEl.closest(".testimonial-card");
+    if (!iframe || !card) return;
+
+    // Captured once, before any resizing — reading card.clientWidth
+    // from inside applyScale would create a feedback loop once the
+    // card starts shrinking to match the scaled content.
+    const maxWidth = card.clientWidth - 32; /* card's own left+right padding */
+
+    const applyScale = () => {
+      const naturalWidth = iframe.offsetWidth;
+      const naturalHeight = iframe.offsetHeight;
+      if (!naturalWidth || !naturalHeight) return;
+      const scale = Math.min(1, maxWidth / naturalWidth);
+      fitEl.style.transform = `scale(${scale})`;
+      fitEl.style.transformOrigin = "top left";
+      fitEl.style.width = `${naturalWidth}px`;
+      fitEl.style.height = `${naturalHeight}px`;
+      // The scale transform doesn't shrink the box's own footprint, so
+      // fix that explicitly on the card or it stays sized to the
+      // pre-scale (natural) dimensions and overflows.
+      card.style.width = `${naturalWidth * scale + 32}px`;
+      card.style.height = `${naturalHeight * scale}px`;
+    };
+
+    // Facebook resizes the iframe asynchronously (a postMessage handshake
+    // once its own content has loaded), so watch for size changes rather
+    // than assuming it's already at its final size right after parse().
+    if (window.ResizeObserver) {
+      new ResizeObserver(applyScale).observe(iframe);
+    } else {
+      iframe.addEventListener("load", () => setTimeout(applyScale, 300));
+    }
+  });
+}
+
 // ---------- Horizontal scroll-snap carousel (About photos, Facebook testimonials) ----------
 function initCarousel({ idPrefix, slidesHtml, slideLabel, autoplayMs, onRender }) {
   const carousel = document.getElementById(`${idPrefix}Carousel`);
@@ -134,26 +173,24 @@ fetch("data/content.json")
 
     // Testimonials (embedded Facebook posts/videos from parents), horizontally scrollable
     if (Array.isArray(data.testimonials) && data.testimonials.length) {
-      // Facebook's "fluid width" mode (no data-width) doesn't reliably fit
-      // our scroll-snap carousel — the iframe it generates can end up
-      // wider than the slide, throwing off centering and snap position.
-      // Compute an explicit pixel width instead: Facebook's plugin has a
-      // documented 350px floor, and our card caps out at 500px.
-      const cardInset = 32 /* .carousel-slide horizontal padding */ + 16 * 2 /* .testimonial-card padding */;
-      const fbWidth = Math.max(350, Math.min(500, Math.floor(window.innerWidth - cardInset)));
-
       initCarousel({
         idPrefix: "testimonials",
         slideLabel: "post",
         autoplayMs: null,
         slidesHtml: data.testimonials.map((t) => {
           const pluginClass = t.type === "video" ? "fb-video" : "fb-post";
-          return `<div class="testimonial-card"><div class="${pluginClass}" data-href="${t.url}" data-width="${fbWidth}" data-show-text="true"></div></div>`;
+          // No data-width: Facebook's own minimum for a given post (e.g. a
+          // multi-photo grid needs more room than a single photo) isn't
+          // always honored when you request less, so a fixed width here
+          // just gets silently overridden and overflows the card anyway.
+          // Instead let Facebook render at its natural size and scale the
+          // result down to fit — see fitFbEmbeds() below.
+          return `<div class="testimonial-card"><div class="fb-embed-fit"><div class="${pluginClass}" data-href="${t.url}" data-show-text="true"></div></div></div>`;
         }),
         // Facebook's SDK auto-parses on load, but our embeds are injected
         // after that fetch resolves, so re-parse explicitly.
         onRender: (track) => {
-          if (window.FB && window.FB.XFBML) window.FB.XFBML.parse(track);
+          if (window.FB && window.FB.XFBML) window.FB.XFBML.parse(track, () => fitFbEmbeds(track));
         },
       });
     }

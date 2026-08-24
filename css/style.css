@@ -294,6 +294,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-slide {
   flex: 0 0 100%;
+  min-width: 0; /* flex items default to min-width:auto, letting oversized content grow the slide past its 100% flex-basis */
   scroll-snap-align: start;
 }
 
@@ -385,10 +386,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--charcoal-soft);
   padding: var(--space-sm);
   border-radius: var(--radius);
+  width: 100%;
+  max-width: 500px;
+  /* Flex items default to min-width: auto, meaning they won't shrink
+     below their content's intrinsic size — without this override, the
+     oversized embed inside forces the card to grow past its own width
+     rule to fit it. */
+  min-width: 0;
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
+.fb-embed-fit { min-width: 0; transform-origin: top left; }
 .carousel--testimonials .carousel-arrow--prev { left: 0; }
 .carousel--testimonials .carousel-arrow--next { right: 0; }
 .carousel--testimonials .carousel-dots { bottom: 0; }
