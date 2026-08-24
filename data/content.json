@@ -27,19 +27,15 @@
   "programs": [
     {
       "name": "All-Star Teams",
-      "description": "Levels 1\u20136, tryouts each spring. Full competition season with regional and national events."
+      "description": "Levels 1\u20133, tryouts each spring. Full competition season with regional and national events."
     },
     {
       "name": "Tumbling Classes",
-      "description": "Beginner through advanced tumbling instruction, open to athletes outside our competitive teams."
-    },
-    {
-      "name": "Tiny Tots",
-      "description": "Ages 4\u20136. First steps in cheer fundamentals \u2014 motions, jumps, and confidence on the mat."
+      "description": "Tiny Tots through advanced tumbling instruction, open to athletes outside our competitive teams."
     },
     {
       "name": "Private Coaching",
-      "description": "One-on-one sessions for skill-specific goals: standing tucks, running passes, stunting technique."
+      "description": "One-on-one sessions for skill-specific goals, including stunts, jumps, tumbling, and motion technique."
     },
     {
       "name": "Dance",
@@ -47,11 +43,11 @@
     },
     {
       "name": "Ninja Warrior Training",
-      "description": "Obstacle-course training built for strength, agility, and problem-solving — inspired by American Ninja Warrior."
+      "description": "Obstacle-course training built for strength, agility, speed, and flexibility — inspired by American Ninja Warrior."
     },
     {
       "name": "Birthday Parties",
-      "description": "Host your child's birthday with us! Cheer, tumbling, and ninja-inspired activities make it a party to remember."
+      "description": "Custom party themes — cheer, dance, ninja warrior, sports, orbi gel, or blacklight — plus add-ons like a rock climbing wall, zip line, arcade games, cotton candy, snow cones, a popcorn machine, hot dog rollers, and bounce houses."
     }
   ],
   "testimonials": [
