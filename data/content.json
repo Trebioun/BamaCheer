@@ -1,5 +1,5 @@
 {
-  "logo": "images/logo-as-athletics.png",
+  "logo": "images/logo-horizontal.png",
   "hero": {
     "eyebrow": "Home of Bama Cheer Xtreme",
     "title": "A's Athletics",
@@ -53,19 +53,19 @@
   "testimonials": [
     {
       "type": "post",
-      "url": "https://www.facebook.com/share/1FmAVg2MYp/?mibextid=wwXIfr"
+      "url": "https://www.facebook.com/sheenaislovingcamiyah.jackson/posts/pfbid02y15QAExzVhZT1txUx3Ddt43T9g7R4CHQeqyWE1kZ632Xfy2Hu9i3YXrbGJXAiNRBl"
     },
     {
       "type": "post",
-      "url": "https://www.facebook.com/share/1Bpg22MWrX/?mibextid=wwXIfr"
+      "url": "https://www.facebook.com/njonesdelicious/posts/pfbid0VL1vYrXTgBwMJ97fu6DsnCm926kycb4sRN5QmNaJyYd8pNa4PzNSkhvYdc1FxDAGl"
     },
     {
       "type": "post",
-      "url": "https://www.facebook.com/share/p/1JfxJV2bdp/?mibextid=wwXIfr"
+      "url": "https://www.facebook.com/umabigkidnow/posts/pfbid0aJssW9ST4Er6gw3y6cFRNAWKrZMfbWyHm3FJvbXNKpv4GAg45K1ntd7CitiW9g4Ql"
     },
     {
-      "type": "video",
-      "url": "https://www.facebook.com/share/v/1bzrmMxj2r/?mibextid=wwXIfr"
+      "type": "post",
+      "url": "https://www.facebook.com/patriece.genae/posts/pfbid036fZZcLNpoH1y3f1ckS4cwHeYTcMGDk1kX8eoEau3Ctm49HF1Hyu5yrsGdGtexY85l"
     }
   ],
   "contact": {

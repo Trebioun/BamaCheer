@@ -140,7 +140,12 @@ fetch("data/content.json")
         autoplayMs: null,
         slidesHtml: data.testimonials.map((t) => {
           const pluginClass = t.type === "video" ? "fb-video" : "fb-post";
-          return `<div class="testimonial-card"><div class="${pluginClass}" data-href="${t.url}" data-width="340"></div></div>`;
+          // No data-width: Facebook's plugin uses fluid width by default,
+          // which fits our responsive carousel far better than a fixed
+          // pixel value (which also has a documented 350px floor - the
+          // 340 used here previously was actually below Facebook's own
+          // minimum).
+          return `<div class="testimonial-card"><div class="${pluginClass}" data-href="${t.url}" data-show-text="true"></div></div>`;
         }),
         // Facebook's SDK auto-parses on load, but our embeds are injected
         // after that fetch resolves, so re-parse explicitly.
