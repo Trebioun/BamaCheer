@@ -134,18 +134,21 @@ fetch("data/content.json")
 
     // Testimonials (embedded Facebook posts/videos from parents), horizontally scrollable
     if (Array.isArray(data.testimonials) && data.testimonials.length) {
+      // Facebook's "fluid width" mode (no data-width) doesn't reliably fit
+      // our scroll-snap carousel — the iframe it generates can end up
+      // wider than the slide, throwing off centering and snap position.
+      // Compute an explicit pixel width instead: Facebook's plugin has a
+      // documented 350px floor, and our card caps out at 500px.
+      const cardInset = 32 /* .carousel-slide horizontal padding */ + 16 * 2 /* .testimonial-card padding */;
+      const fbWidth = Math.max(350, Math.min(500, Math.floor(window.innerWidth - cardInset)));
+
       initCarousel({
         idPrefix: "testimonials",
         slideLabel: "post",
         autoplayMs: null,
         slidesHtml: data.testimonials.map((t) => {
           const pluginClass = t.type === "video" ? "fb-video" : "fb-post";
-          // No data-width: Facebook's plugin uses fluid width by default,
-          // which fits our responsive carousel far better than a fixed
-          // pixel value (which also has a documented 350px floor - the
-          // 340 used here previously was actually below Facebook's own
-          // minimum).
-          return `<div class="testimonial-card"><div class="${pluginClass}" data-href="${t.url}" data-show-text="true"></div></div>`;
+          return `<div class="testimonial-card"><div class="${pluginClass}" data-href="${t.url}" data-width="${fbWidth}" data-show-text="true"></div></div>`;
         }),
         // Facebook's SDK auto-parses on load, but our embeds are injected
         // after that fetch resolves, so re-parse explicitly.

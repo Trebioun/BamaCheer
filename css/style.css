@@ -385,13 +385,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--charcoal-soft);
   padding: var(--space-sm);
   border-radius: var(--radius);
-  width: 100%;
-  max-width: 500px;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
-}
-.testimonial-card .fb-post,
-.testimonial-card .fb-video {
-  width: 100% !important;
 }
 .carousel--testimonials .carousel-arrow--prev { left: 0; }
 .carousel--testimonials .carousel-arrow--next { right: 0; }
@@ -483,6 +479,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 800px) {
   .nav-links { display: none; }
   .nav-toggle { display: block; }
+  /* The fixed nav (84px tall) floats over the hero on wider screens by
+     design, but on a short mobile hero that hides the top of the image
+     (including part of the logo), so push the whole hero below the
+     nav here instead. */
+  .hero-wrap { margin-top: 84px; }
   /* The full-width, uncropped image gets too short here to overlay
      readable text, so the copy moves below the image instead. */
   .hero::after { display: none; }
