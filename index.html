@@ -146,5 +146,12 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  // Forward Netlify Identity tokens (invite/confirmation/recovery) to /admin
+  // so the Decap CMS widget there can process them.
+  if (window.location.hash && /invite_token|confirmation_token|recovery_token|email_change_token/.test(window.location.hash)) {
+    window.location.href = "/admin/" + window.location.hash;
+  }
+</script>
 </body>
 </html>
