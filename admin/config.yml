@@ -37,11 +37,18 @@ collections:
                 name: "images"
                 widget: "list"
                 required: false
+                # No `max` is set, so this list is unlimited. label_singular
+                # makes the button read "Add Photo" rather than the list's
+                # own label, which reads as if the carousel itself is the
+                # thing being added.
+                label_singular: "Photo"
+                hint: "Add as many photos as you like — there's no limit. Use \"Add Photo\" at the bottom of the list, and drag items to reorder them."
                 field: { label: "Photo", name: "image", widget: "image" }
 
           - label: "Stats"
             name: "stats"
             widget: "list"
+            label_singular: "Stat"
             fields:
               - { label: "Number", name: "number", widget: "string" }
               - { label: "Label", name: "label", widget: "string" }
@@ -49,6 +56,7 @@ collections:
           - label: "Programs"
             name: "programs"
             widget: "list"
+            label_singular: "Program"
             fields:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
@@ -56,6 +64,12 @@ collections:
           - label: "Testimonials (embedded Facebook posts)"
             name: "testimonials"
             widget: "list"
+            required: false
+            # Unlimited — no `max` set. See the About photo list above for
+            # why label_singular matters here.
+            label_singular: "Testimonial"
+            collapsed: false
+            hint: "Add as many posts as you like — there's no limit. Use \"Add Testimonial\" at the bottom of the list, and drag items to reorder them."
             fields:
               - label: "Type"
                 name: "type"
@@ -75,6 +89,7 @@ collections:
               - label: "Locations"
                 name: "locations"
                 widget: "list"
+                label_singular: "Location"
                 fields:
                   - { label: "Location Name", name: "name", widget: "string" }
                   - { label: "Address", name: "address", widget: "string" }
