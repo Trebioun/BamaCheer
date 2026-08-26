@@ -3,31 +3,40 @@
   "hero": {
     "eyebrow": "Home of Bama Cheer Xtreme",
     "title": "A's Athletics",
-    "subtitle": "Cheer, dance, Ninja Warrior training, and birthday parties in Tuscaloosa & Northport \u2014 building skills, confidence, and champions.",
+    "subtitle": "Cheer, dance, Ninja Warrior training, and birthday parties in Tuscaloosa & Northport — building skills, confidence, and champions.",
     "ctaText": "Contact Us",
     "ctaLink": "#contact",
     "backgroundImage": "images/hero-banner.jpg"
   },
   "about": {
     "heading": "Building Skills. Building Confidence. Building Champions.",
-    "body": "At A's Athletics, our mission is to empower children, teens, and adults through movement, athletics, discipline, and personal growth. We provide a positive, inclusive environment where athletes of all ages can develop their skills, build confidence, strengthen their bodies, and discover their potential. Through competitive cheer, tumbling, Ninja Warrior training, and dance, we aim to develop more than great athletes \u2014 we build confidence, character, discipline, resilience, and a commitment to excellence, inspiring every athlete to believe in themselves, work hard, have fun, and grow stronger both inside and out.",
+    "body": "At A's Athletics, our mission is to empower children, teens, and adults through movement, athletics, discipline, and personal growth. We provide a positive, inclusive environment where athletes of all ages can develop their skills, build confidence, strengthen their bodies, and discover their potential. Through competitive cheer, tumbling, Ninja Warrior training, and dance, we aim to develop more than great athletes — we build confidence, character, discipline, resilience, and a commitment to excellence, inspiring every athlete to believe in themselves, work hard, have fun, and grow stronger both inside and out.",
     "images": [
       "images/team-coach.jpg",
-      "images/about-coaches.jpg",
-      "images/about-mayors-cup.jpg",
+      "/images/img_5682.jpeg",
+      "/images/img_5640.jpeg",
       "images/about-bama-bash.jpg",
-      "images/about-team-tree.jpg"
+      "/images/img_5680.jpeg"
     ]
   },
   "stats": [
-    { "number": "12+", "label": "Years coaching" },
-    { "number": "8", "label": "Competitive teams" },
-    { "number": "40+", "label": "Regional & national titles" }
+    {
+      "number": "12+",
+      "label": "Years coaching"
+    },
+    {
+      "number": "8",
+      "label": "Competitive teams"
+    },
+    {
+      "number": "40+",
+      "label": "Regional & national titles"
+    }
   ],
   "programs": [
     {
       "name": "All-Star Teams",
-      "description": "Levels 1\u20133, tryouts each spring. Full competition season with regional and national events."
+      "description": "Levels 1–3, tryouts each spring. Full competition season with regional and national events."
     },
     {
       "name": "Tumbling Classes",
@@ -71,7 +80,7 @@
   "contact": {
     "phone": "(205) 242-7576",
     "email": "Bamacheer@yahoo.com",
-    "hours": "Hours coming soon \u2014 call or email to confirm practice times",
+    "hours": "Hours coming soon — call or email to confirm practice times",
     "locations": [
       {
         "name": "University Location",
